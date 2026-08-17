@@ -64,7 +64,7 @@ export function Projects() {
       className="relative bg-black md:h-[320vh]"
     >
       <div className="bg-black md:sticky md:top-0 md:flex md:h-screen md:flex-col md:justify-center md:overflow-hidden md:pb-6">
-        <div className="mx-auto w-full max-w-6xl px-5 pt-24 sm:px-8 md:pt-8">
+        <div className="w-full px-5 pt-24 sm:px-10 md:pt-8 lg:px-16">
           <motion.h2
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export function Projects() {
 
         <div
           ref={trackRef}
-          className="mt-8 flex w-full gap-6 px-5 pb-10 will-change-transform sm:px-8 md:mt-8 md:overflow-visible md:pb-0 lg:px-[max(2rem,calc((100vw-72rem)/2+2rem))] max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:overscroll-x-contain max-md:touch-pan-x max-md:scrollbar-none"
+          className="mt-8 flex w-full gap-6 px-5 pb-10 will-change-transform sm:px-10 md:mt-8 md:overflow-visible md:pb-0 lg:px-16 max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:overscroll-x-contain max-md:touch-pan-x max-md:scrollbar-none"
         >
           {t.projects.map((project, i) => {
             const href = project.live ?? project.github;
