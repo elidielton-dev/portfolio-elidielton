@@ -54,7 +54,7 @@ export function Header() {
         visible ? "translate-y-0" : "-translate-y-full pointer-events-none"
       } ${scrolled ? "border-b border-white/5 bg-black/70 backdrop-blur-md" : "bg-transparent"}`}
     >
-      <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-20 w-full items-center justify-between px-5 sm:px-10 lg:px-16">
         <a href="#topo" className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
           {t.firstName}
         </a>
@@ -99,7 +99,7 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="border-t border-white/5 bg-black/95 px-5 py-4 md:hidden">
+        <div className="border-t border-white/5 bg-black/95 px-5 py-4 sm:px-10 md:hidden">
           <div className="flex flex-col gap-4 text-base font-semibold text-zinc-300">
             {links.map((link) => (
               <a
