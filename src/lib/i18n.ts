@@ -109,7 +109,7 @@ export const content = {
           "Portal público de empregabilidade e qualificação de Arcoverde-PE: vagas, currículos, empresas, atendimento assistido e painéis da ACA e da Prefeitura.",
         tech: ["TypeScript", "Next.js", "React", "PostgreSQL", "Tailwind CSS"],
         github: "https://github.com/elidielton-dev/emprega-arcoverde",
-        live: "https://empregaarcoverde.vercel.app",
+        live: "https://emprega.arcoverde.pe.gov.br/",
         accent: "from-orange-400 via-amber-600 to-zinc-950",
       },
       {
@@ -300,7 +300,7 @@ export const content = {
           "Public employability and skills portal for Arcoverde, PE: job listings, resumes, companies, assisted service, and ACA/City Hall dashboards.",
         tech: ["TypeScript", "Next.js", "React", "PostgreSQL", "Tailwind CSS"],
         github: "https://github.com/elidielton-dev/emprega-arcoverde",
-        live: "https://empregaarcoverde.vercel.app",
+        live: "https://emprega.arcoverde.pe.gov.br/",
         accent: "from-orange-400 via-amber-600 to-zinc-950",
       },
       {
