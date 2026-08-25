@@ -9,6 +9,7 @@ import { TechIcons } from "./tech-icons";
 import { TerminalPreview, hasTerminalPreview } from "./terminal-preview";
 
 const PREVIEWS: Record<string, string> = {
+  "Emprega Arcoverde": "/projects/emprega-arcoverde-live.png",
   NorFood: "/projects/norfood-live.png",
   "Abelha & Mel": "/projects/abelha-e-mel-loja.png",
   Belíssima: "/projects/belissima-live.png",
@@ -61,7 +62,7 @@ export function Projects() {
     <section
       ref={wrapRef}
       id="projetos"
-      className="relative bg-black md:h-[320vh]"
+      className="relative bg-black md:h-[360vh]"
     >
       <div className="bg-black md:sticky md:top-0 md:flex md:h-screen md:flex-col md:justify-center md:overflow-hidden md:pb-6">
         <div className="w-full px-5 pt-24 sm:px-10 md:pt-8 lg:px-16">

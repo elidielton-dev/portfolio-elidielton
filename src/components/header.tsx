@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/lib/language";
+import { ACTIVE_LOGO_VARIANT, Logo } from "./logo";
 import { LanguageSwitcher } from "./language-switcher";
 import { CloseIcon, GithubIcon, LinkedinIcon, MenuIcon } from "./social-icons";
 
@@ -55,7 +56,11 @@ export function Header() {
       } ${scrolled ? "border-b border-white/5 bg-black/70 backdrop-blur-md" : "bg-transparent"}`}
     >
       <div className="mx-auto flex h-20 w-full items-center justify-between px-5 sm:px-10 lg:px-16">
-        <a href="#topo" className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+        <a
+          href="#topo"
+          className="flex items-center gap-3 text-3xl font-semibold tracking-tight text-white transition hover:text-zinc-200 sm:gap-3.5 sm:text-4xl"
+        >
+          <Logo variant={ACTIVE_LOGO_VARIANT} size={38} className="shrink-0" />
           {t.firstName}
         </a>
 
