@@ -49,12 +49,23 @@ export function Projects() {
   }, [applyDesktopProgress]);
 
   useEffect(() => {
+    let raf = 0;
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        syncFromPageScroll();
+      });
+    };
+
     syncFromPageScroll();
-    window.addEventListener("scroll", syncFromPageScroll, { passive: true });
-    window.addEventListener("resize", syncFromPageScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener("scroll", syncFromPageScroll);
-      window.removeEventListener("resize", syncFromPageScroll);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
     };
   }, [syncFromPageScroll, t.projects]);
 
@@ -114,6 +125,7 @@ export function Projects() {
                         alt={project.title}
                         fill
                         sizes="(max-width: 768px) 88vw, 28rem"
+                        loading={i === 0 ? "eager" : "lazy"}
                         className="object-cover object-top"
                       />
                     ) : (

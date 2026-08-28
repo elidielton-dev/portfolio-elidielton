@@ -40,7 +40,7 @@ export function About() {
               width={640}
               height={640}
               className="h-auto w-full object-cover grayscale"
-              priority
+              loading="lazy"
             />
           </div>
         </motion.div>

@@ -13,10 +13,12 @@ type Cloud = {
 
 export function HeroEffects({ active }: { active: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const root = rootRef.current;
+    if (!canvas || !root) return;
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
@@ -29,34 +31,28 @@ export function HeroEffects({ active }: { active: boolean }) {
       alpha: 0.16 + (i % 3) * 0.04,
     }));
 
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let visible = true;
+    let frame = 0;
+    let running = true;
+    const start = performance.now();
+
     const resize = () => {
       const parent = canvas.parentElement;
       const w = parent?.clientWidth ?? window.innerWidth;
       const h = parent?.clientHeight ?? window.innerHeight;
       if (w < 8 || h < 8) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1) * 0.5;
+      canvas.width = Math.max(1, Math.floor(w * dpr));
+      canvas.height = Math.max(1, Math.floor(h * dpr));
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
     };
 
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas.parentElement ?? canvas);
-
-    let frame = 0;
-    let running = true;
-    const start = performance.now();
-
-    const draw = (now: number) => {
-      if (!running) return;
+    const drawFrame = (now: number) => {
       const w = canvas.width;
       const h = canvas.height;
-      if (w < 8 || h < 8) {
-        frame = requestAnimationFrame(draw);
-        return;
-      }
+      if (w < 8 || h < 8) return;
 
       const t = (now - start) / 1000;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -65,7 +61,6 @@ export function HeroEffects({ active }: { active: boolean }) {
       ctx.fillStyle = "#050505";
       ctx.fillRect(0, 0, w, h);
 
-      ctx.filter = "blur(28px)";
       ctx.globalCompositeOperation = "lighter";
       for (const cloud of clouds) {
         const x = (cloud.x + Math.sin(t * cloud.speed + cloud.phase) * 0.22) * w;
@@ -80,27 +75,75 @@ export function HeroEffects({ active }: { active: boolean }) {
         ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fill();
       }
+    };
 
+    const draw = (now: number) => {
+      if (!running) return;
+      if (!visible || document.hidden) {
+        frame = 0;
+        return;
+      }
+
+      drawFrame(now);
       frame = requestAnimationFrame(draw);
     };
 
-    frame = requestAnimationFrame(draw);
+    const kick = () => {
+      if (reducedMotion || !visible || document.hidden) return;
+      if (!frame) frame = requestAnimationFrame(draw);
+    };
+
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas.parentElement ?? canvas);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) kick();
+        else {
+          cancelAnimationFrame(frame);
+          frame = 0;
+        }
+      },
+      { threshold: 0 },
+    );
+    observer.observe(root);
+
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(frame);
+        frame = 0;
+      } else {
+        kick();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    if (reducedMotion) drawFrame(performance.now());
+    else kick();
 
     return () => {
       running = false;
       cancelAnimationFrame(frame);
+      observer.disconnect();
       ro.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
   return (
     <div
+      ref={rootRef}
       aria-hidden
       className={`pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#050505] transition-opacity duration-700 ${
         active ? "opacity-100" : "opacity-0"
       }`}
     >
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 h-full w-full blur-[28px] will-change-transform"
+      />
       <div className="hero-grain absolute inset-0" />
     </div>
   );

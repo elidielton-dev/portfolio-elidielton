@@ -26,18 +26,22 @@ function MarqueeRow({
   items,
   direction,
   paused,
+  running,
 }: {
   items: readonly string[];
   direction: "left" | "right";
   paused: boolean;
+  running: boolean;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(paused);
+  const runningRef = useRef(running);
   const xRef = useRef(0);
   const readyRef = useRef(false);
   const track = [...items, ...items];
 
   pausedRef.current = paused;
+  runningRef.current = running;
 
   useEffect(() => {
     const el = trackRef.current;
@@ -57,7 +61,7 @@ function MarqueeRow({
         readyRef.current = true;
       }
 
-      if (half > 0 && !pausedRef.current) {
+      if (half > 0 && runningRef.current && !pausedRef.current) {
         xRef.current += pixelsPerSecond * dt;
         if (direction === "left" && xRef.current <= -half) {
           xRef.current += half;
@@ -68,12 +72,23 @@ function MarqueeRow({
         el.style.transform = `translate3d(${xRef.current}px, 0, 0)`;
       }
 
-      raf = requestAnimationFrame(tick);
+      if (runningRef.current && !pausedRef.current) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = 0;
+      }
     };
 
-    raf = requestAnimationFrame(tick);
+    const start = () => {
+      if (!raf && runningRef.current && !pausedRef.current) {
+        last = performance.now();
+        raf = requestAnimationFrame(tick);
+      }
+    };
+
+    start();
     return () => cancelAnimationFrame(raf);
-  }, [direction, items.join("|")]);
+  }, [direction, items.join("|"), running, paused]);
 
   return (
     <div className="overflow-hidden">
@@ -94,12 +109,26 @@ function MarqueeRow({
 
 export function Skills() {
   const { t } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
   const [paused, setPaused] = useState(false);
+  const [marqueeRunning, setMarqueeRunning] = useState(false);
   const rowA = t.hardSkills;
   const rowB = [...t.hardSkills].reverse();
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setMarqueeRunning(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="skills" className="bg-black px-5 py-24 sm:px-8 sm:py-32">
+    <section ref={sectionRef} id="skills" className="bg-black px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
@@ -116,8 +145,8 @@ export function Skills() {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <MarqueeRow items={rowA} direction="right" paused={paused} />
-        <MarqueeRow items={rowB} direction="left" paused={paused} />
+        <MarqueeRow items={rowA} direction="right" paused={paused} running={marqueeRunning} />
+        <MarqueeRow items={rowB} direction="left" paused={paused} running={marqueeRunning} />
       </div>
 
       <div className="mx-auto mt-24 max-w-6xl">

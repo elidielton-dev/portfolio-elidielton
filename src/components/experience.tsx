@@ -42,13 +42,14 @@ export function Experience() {
     };
 
     const loop = () => {
-      read();
       apply();
       const moving = Math.abs(target - current) > 0.2;
-      frame = visible || moving ? requestAnimationFrame(loop) : 0;
+      frame = moving ? requestAnimationFrame(loop) : 0;
     };
 
     const start = () => {
+      if (!visible) return;
+      read();
       if (!frame) frame = requestAnimationFrame(loop);
     };
 
@@ -56,6 +57,10 @@ export function Experience() {
       ([entry]) => {
         visible = entry.isIntersecting;
         if (visible) start();
+        else {
+          cancelAnimationFrame(frame);
+          frame = 0;
+        }
       },
       { threshold: 0 },
     );
@@ -101,7 +106,7 @@ export function Experience() {
             />
             <span
               ref={dotRef}
-              className="absolute top-0 left-1/2 size-3 rounded-full border-2 border-white bg-black shadow-[0_0_18px_6px_rgba(255,255,255,0.55)] will-change-transform"
+              className="absolute top-0 left-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-black shadow-[0_0_18px_6px_rgba(255,255,255,0.55)] will-change-transform"
               style={{ transform: "translate3d(-50%, -50%, 0)" }}
             />
           </div>
