@@ -49,7 +49,7 @@ export const content = {
     aboutTitle: "Um pouco sobre mim e minha trajetória na programação",
     about: [
       "Curso Análise e Desenvolvimento de Sistemas (3º período) na AESA — CESA e construo projetos web com TypeScript, React, Java e bancos relacionais. Comecei com HTML, CSS e JavaScript e venho evoluindo para stacks modernas fullstack.",
-      "No GitHub publico apps como o Emprega Arcoverde (portal de empregabilidade), NorFood (delivery/omnichannel), Abelha & Mel, Belíssima e Sertão Replay, além de sistemas em Java como o ControlMoney. Meu objetivo é criar produtos úteis, bem estruturados e com boa experiência para quem usa.",
+      "No GitHub publico apps como o Emprega Arcoverde e o Emprega CDL Sertânia, o ERP SINC, o delivery Shakely, NorFood, Abelha & Mel, Belíssima e Sertão Replay, além de sistemas em Java como o ControlMoney. Meu objetivo é criar produtos úteis, bem estruturados e com boa experiência para quem usa.",
     ],
     projectsTitle: "Meus projetos",
     projectLabel: "Projeto",
@@ -114,6 +114,36 @@ export const content = {
       },
       {
         number: "02",
+        title: "Emprega CDL Sertânia",
+        description:
+          "Portal de empregabilidade e qualificação de Sertânia-PE para a CDL: vagas, currículos, empresas, cursos e atendimento assistido.",
+        tech: ["TypeScript", "Next.js", "React", "PostgreSQL", "Tailwind CSS"],
+        github: null,
+        live: "https://sertania.elidieltondev.online/",
+        accent: "from-blue-900 via-green-600 to-zinc-950",
+      },
+      {
+        number: "03",
+        title: "SINC",
+        description:
+          "ERP desktop para associações empresariais: administrativo, financeiro, tesouraria, mercado e relatórios, com licença e backup.",
+        tech: ["Java", "Spring", "PostgreSQL"],
+        github: "https://github.com/elidielton-dev/sinc",
+        live: null,
+        accent: "from-sky-600 via-blue-950 to-zinc-950",
+      },
+      {
+        number: "04",
+        title: "Shakely",
+        description:
+          "Gestão e pedidos de delivery: cardápio, kanban da cozinha, app do cliente e atendimento por WhatsApp.",
+        tech: ["React", "Go", "Docker", "Node.js"],
+        github: "https://github.com/elidielton-dev/shakely",
+        live: "https://shakely.elidieltondev.online/",
+        accent: "from-pink-500 via-fuchsia-600 to-zinc-950",
+      },
+      {
+        number: "05",
         title: "NorFood",
         description:
           "Plataforma de delivery e atendimento omnichannel com painel, loja, pedidos e integração WhatsApp. Stack TypeScript moderna com foco em operação real de restaurantes.",
@@ -123,7 +153,7 @@ export const content = {
         accent: "from-orange-500 via-rose-600 to-zinc-950",
       },
       {
-        number: "03",
+        number: "06",
         title: "Abelha & Mel",
         description:
           "Confeitaria artesanal com catálogo, categorias e vitrine de pedidos. Interface em TypeScript focada em uma experiência doce, clara e fácil de usar.",
@@ -133,7 +163,7 @@ export const content = {
         accent: "from-amber-400 via-yellow-600 to-zinc-950",
       },
       {
-        number: "04",
+        number: "07",
         title: "Belíssima",
         description:
           "Loja de perfumes com catálogo, quiz rápido para descobrir a fragrância ideal e interface sofisticada em verde e dourado.",
@@ -143,7 +173,7 @@ export const content = {
         accent: "from-emerald-700 via-amber-600 to-zinc-950",
       },
       {
-        number: "05",
+        number: "08",
         title: "Sertão Replay",
         description:
           "Experiência web temática do Sertão, com deploy na Vercel. Projeto em JavaScript focado em apresentação e interação no navegador.",
@@ -153,7 +183,7 @@ export const content = {
         accent: "from-sky-400 via-cyan-600 to-zinc-950",
       },
       {
-        number: "06",
+        number: "09",
         title: "ControlMoney",
         description:
           "Aplicação Java para controle financeiro pessoal: receitas, despesas, extrato e cálculo de saldo de forma simples e eficiente.",
@@ -163,7 +193,7 @@ export const content = {
         accent: "from-emerald-400 via-teal-600 to-zinc-950",
       },
       {
-        number: "07",
+        number: "10",
         title: "Banco",
         description:
           "Projeto acadêmico em Java modelando operações bancárias, reforçando POO, regras de negócio e organização de código.",
@@ -173,7 +203,7 @@ export const content = {
         accent: "from-blue-400 via-indigo-600 to-zinc-950",
       },
       {
-        number: "08",
+        number: "11",
         title: "prova-POO / ProjetoExtra",
         description:
           "Exercícios e projetos em Java focados em programação orientada a objetos, estruturas e práticas de desenvolvimento.",
@@ -240,7 +270,7 @@ export const content = {
     aboutTitle: "A bit about me and my journey in programming",
     about: [
       "I'm studying Systems Analysis and Development (3rd semester) at AESA — CESA and building web projects with TypeScript, React, Java, and relational databases. I started with HTML, CSS, and JavaScript and keep growing into modern fullstack stacks.",
-      "On GitHub I ship apps like Emprega Arcoverde (employability portal), NorFood (delivery/omnichannel), Abelha & Mel, Belíssima, and Sertão Replay, plus Java systems like ControlMoney. My goal is to create useful, well-structured products with a great experience for users.",
+      "On GitHub I ship apps like Emprega Arcoverde and Emprega CDL Sertânia, the SINC ERP, Shakely delivery, NorFood, Abelha & Mel, Belíssima, and Sertão Replay, plus Java systems like ControlMoney. My goal is to create useful, well-structured products with a great experience for users.",
     ],
     projectsTitle: "My projects",
     projectLabel: "Project",
@@ -305,6 +335,36 @@ export const content = {
       },
       {
         number: "02",
+        title: "Emprega CDL Sertânia",
+        description:
+          "Employability and skills portal for Sertânia, PE, built for the local CDL: jobs, resumes, companies, courses, and assisted service.",
+        tech: ["TypeScript", "Next.js", "React", "PostgreSQL", "Tailwind CSS"],
+        github: null,
+        live: "https://sertania.elidieltondev.online/",
+        accent: "from-blue-900 via-green-600 to-zinc-950",
+      },
+      {
+        number: "03",
+        title: "SINC",
+        description:
+          "Desktop ERP for business associations: administration, finance, treasury, marketplace, and reports, with licensing and backup.",
+        tech: ["Java", "Spring", "PostgreSQL"],
+        github: "https://github.com/elidielton-dev/sinc",
+        live: null,
+        accent: "from-sky-600 via-blue-950 to-zinc-950",
+      },
+      {
+        number: "04",
+        title: "Shakely",
+        description:
+          "Delivery management and orders: menu, kitchen kanban, customer app, and WhatsApp support.",
+        tech: ["React", "Go", "Docker", "Node.js"],
+        github: "https://github.com/elidielton-dev/shakely",
+        live: "https://shakely.elidieltondev.online/",
+        accent: "from-pink-500 via-fuchsia-600 to-zinc-950",
+      },
+      {
+        number: "05",
         title: "NorFood",
         description:
           "Delivery and omnichannel support platform with dashboard, storefront, orders, and WhatsApp integration. Modern TypeScript stack focused on real restaurant operations.",
@@ -314,7 +374,7 @@ export const content = {
         accent: "from-orange-500 via-rose-600 to-zinc-950",
       },
       {
-        number: "03",
+        number: "06",
         title: "Abelha & Mel",
         description:
           "Artisan confectionery with catalog, categories, and product showcase. TypeScript interface focused on a sweet, clear, and easy-to-use experience.",
@@ -324,7 +384,7 @@ export const content = {
         accent: "from-amber-400 via-yellow-600 to-zinc-950",
       },
       {
-        number: "04",
+        number: "07",
         title: "Belíssima",
         description:
           "Perfume store with catalog, a quick quiz to find the ideal fragrance, and a sophisticated green-and-gold interface.",
@@ -334,7 +394,7 @@ export const content = {
         accent: "from-emerald-700 via-amber-600 to-zinc-950",
       },
       {
-        number: "05",
+        number: "08",
         title: "Sertão Replay",
         description:
           "Thematic web experience inspired by the Sertão, deployed on Vercel. JavaScript project focused on presentation and browser interaction.",
@@ -344,7 +404,7 @@ export const content = {
         accent: "from-sky-400 via-cyan-600 to-zinc-950",
       },
       {
-        number: "06",
+        number: "09",
         title: "ControlMoney",
         description:
           "Java app for personal finance: income, expenses, statement, and balance calculation in a simple and efficient way.",
@@ -354,7 +414,7 @@ export const content = {
         accent: "from-emerald-400 via-teal-600 to-zinc-950",
       },
       {
-        number: "07",
+        number: "10",
         title: "Banco",
         description:
           "Academic Java project modeling banking operations, reinforcing OOP, business rules, and code organization.",
@@ -364,7 +424,7 @@ export const content = {
         accent: "from-blue-400 via-indigo-600 to-zinc-950",
       },
       {
-        number: "08",
+        number: "11",
         title: "prova-POO / ProjetoExtra",
         description:
           "Java exercises and projects focused on object-oriented programming, structures, and development practices.",
