@@ -12,7 +12,7 @@ const PREVIEWS: Record<string, string> = {
   "Emprega Arcoverde": "/projects/emprega-arcoverde-live.png",
   "Emprega CDL Sertânia": "/projects/emprega-cdl-sertania.png",
   SINC: "/projects/sinc.png",
-  Shakely: "/projects/shakely.png",
+  Shakely: "/projects/shakely-sertania.webp",
   NorFood: "/projects/norfood-live.png",
   "Abelha & Mel": "/projects/abelha-e-mel-loja.png",
   Belíssima: "/projects/belissima-live.png",

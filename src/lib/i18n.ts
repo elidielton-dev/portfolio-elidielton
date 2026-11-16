@@ -136,10 +136,10 @@ export const content = {
         number: "04",
         title: "Shakely",
         description:
-          "Gestão e pedidos de delivery: cardápio, kanban da cozinha, app do cliente e atendimento por WhatsApp.",
+          "Delivery oficial da Shakely em Sertânia-PE: pedidos pelo site, kanban da cozinha e WhatsApp.",
         tech: ["React", "Go", "Docker", "Node.js"],
         github: "https://github.com/elidielton-dev/shakely",
-        live: "https://shakely.elidieltondev.online/",
+        live: "https://sertania.shakely.com.br/",
         accent: "from-pink-500 via-fuchsia-600 to-zinc-950",
       },
       {
@@ -357,10 +357,10 @@ export const content = {
         number: "04",
         title: "Shakely",
         description:
-          "Delivery management and orders: menu, kitchen kanban, customer app, and WhatsApp support.",
+          "Shakely's official delivery in Sertânia, PE: online ordering, kitchen kanban, and WhatsApp.",
         tech: ["React", "Go", "Docker", "Node.js"],
         github: "https://github.com/elidielton-dev/shakely",
-        live: "https://shakely.elidieltondev.online/",
+        live: "https://sertania.shakely.com.br/",
         accent: "from-pink-500 via-fuchsia-600 to-zinc-950",
       },
       {
