@@ -12,6 +12,8 @@ const SIMPLE: Record<string, string> = {
   HTML: "html5",
   CSS: "css",
   Java: "openjdk",
+  Spring: "spring",
+  Go: "go",
   Tailwind: "tailwindcss",
   "Tailwind CSS": "tailwindcss",
   Docker: "docker",

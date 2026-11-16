@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, type CSSProperties } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language";
@@ -10,6 +10,9 @@ import { TerminalPreview, hasTerminalPreview } from "./terminal-preview";
 
 const PREVIEWS: Record<string, string> = {
   "Emprega Arcoverde": "/projects/emprega-arcoverde-live.png",
+  "Emprega CDL Sertânia": "/projects/emprega-cdl-sertania.png",
+  SINC: "/projects/sinc.png",
+  Shakely: "/projects/shakely-sertania.webp",
   NorFood: "/projects/norfood-live.png",
   "Abelha & Mel": "/projects/abelha-e-mel-loja.png",
   Belíssima: "/projects/belissima-live.png",
@@ -73,7 +76,8 @@ export function Projects() {
     <section
       ref={wrapRef}
       id="projetos"
-      className="relative bg-black md:h-[360vh]"
+      style={{ "--project-count": t.projects.length } as CSSProperties}
+      className="relative bg-black md:h-[calc(100vh+var(--project-count)*32vh)]"
     >
       <div className="bg-black md:sticky md:top-0 md:flex md:h-screen md:flex-col md:justify-center md:overflow-hidden md:pb-6">
         <div className="w-full px-5 pt-24 sm:px-10 md:pt-8 lg:px-16">
@@ -92,7 +96,7 @@ export function Projects() {
           className="mt-8 flex w-full gap-6 px-5 pb-10 will-change-transform sm:px-10 md:mt-8 md:overflow-visible md:pb-0 lg:px-16 max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:overscroll-x-contain max-md:touch-pan-x max-md:scrollbar-none"
         >
           {t.projects.map((project, i) => {
-            const href = project.live ?? project.github;
+            const href = project.live ?? project.github ?? undefined;
             const preview = PREVIEWS[project.title];
             return (
               <motion.article

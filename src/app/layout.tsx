@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Portfólio Elidielton Rodrigues | Desenvolvedor Fullstack",
   description:
     "Portfólio de Elidielton Rodrigues — Desenvolvedor Fullstack em Custódia-PE. Projetos em TypeScript, React, Java e mais.",
-  metadataBase: new URL("https://elidielton-dev.vercel.app"),
+  metadataBase: new URL("https://elidieltondev.online"),
   openGraph: {
     title: "Elidielton Rodrigues | Desenvolvedor Fullstack",
     description: "Aplicações web reais, do backend às interfaces modernas.",
